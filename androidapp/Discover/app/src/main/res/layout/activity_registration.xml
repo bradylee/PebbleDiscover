@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+android:layout_height="match_parent" android:background="@color/background_material_light">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/table_height"
+            android:text="@string/registration_text"
+            android:textSize="@dimen/registration_text_size"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/table_height"
+            android:id="@+id/username_input"
+            android:paddingBottom="@dimen/registration_pad_bot"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/registration_pad_bot"
+            android:text="Venues" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/venues">
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Zoo"
+                android:id="@+id/venues_zoo"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Amusement Park"
+                android:id="@+id/venues_amusement_park"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Casino"
+                android:id="@+id/venues_casino"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Shopping Mall"
+                android:id="@+id/venues_shopping_mall"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Movie Theatre"
+                android:id="@+id/venues_movie_theatre"/>
+
+        </View>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/registration_pad_bot"
+            android:text="Food" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/food">
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Food Bakery"
+                android:id="@+id/food_bakery"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Zoo"
+                android:id="@+id/zoo"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Meal Delivery"
+                android:id="@+id/meal_delivery"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Takeaway"
+                android:id="@+id/meal_takeaway"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Food Restaurant"
+                android:id="@+id/restaurant"/>
+
+        </View>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/registration_pad_bot"
+            android:text="Stores" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/stores">
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Department Stores"
+                android:id="@+id/department_store"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Clothing Stores"
+                android:id="@+id/clothing_store"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Electronics Stores"
+                android:id="@+id/electronics_store"/>
+
+        </View>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/registration_pad_bot"
+            android:text="Public Transport" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/public_transport">
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Subway Station"
+                android:id="@+id/subway_station"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Train Station"
+                android:id="@+id/train_station"/>
+
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Taxi Stand"
+                android:id="@+id/taxi_stand"/>
+
+        </View>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/registration_pad_bot"
+            android:text="Miscellaneous Keywords" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/keywords"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/table_height"
+            android:text="@string/registration_btn_text"
+            android:textSize="@dimen/registration_btn_size"
+            android:onClick="processUsername"/>
+
+    </LinearLayout>
+
+</ScrollView>

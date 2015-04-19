@@ -9,25 +9,12 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:id="@id+/main_scroller">
+        android:id="@+id/main_scroller">
 
         <TableLayout
             android:layout_width="fill_parent"
-            android:layout_height="@dimen/table_height" />
-
-        <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/table_height" />
-
-        <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/table_height" />
-
-        <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/table_height" />
-        <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+            android:layout_height="@dimen/table_height"
+            android:background="@color/background_material_dark"/>
 
     </LinearLayout>
 

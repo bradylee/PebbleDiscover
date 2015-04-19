@@ -25,7 +25,7 @@ class User():
         'amusement_park',  \
         'casino',  \
         'shopping_mall',  \
-        'movie_theater',  \
+        'movie_theatre',  \
         '' ],
     'public_transport': [ \
         'subway_station',  \
