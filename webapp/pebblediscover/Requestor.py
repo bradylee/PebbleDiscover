@@ -102,5 +102,5 @@ class Requestor():
         else: filtered_response['category']['name'] = 'keyword'
         filtered_response['category']['type'] = async_queries[i].parameters['keyword']
         filtered_responses[i] = filtered_response
-      return filtered_responses
+      return json.dumps(filtered_responses)
     else: return None

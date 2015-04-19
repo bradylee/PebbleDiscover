@@ -24,22 +24,24 @@ def register():
   # Setup the user
   user = User()
   user.username = R['username']
-  del R['username']
   
   # Parse through the preferences and validate
-  for k, v in R.iteritems():
-    if type(R[k]) != list: return 'Error: Invalid input data\n'
-    else:
-      for i in range(len(R[k])): 
-        if type(R[k][i]) != str: return 'Error: Invalid input data\n'
-  
-  # Create the user if doesn't exist
-  user.preferences = R
+  if R.has_key('preferenecs'):
+    for k, v in R['preferences'].iteritems():
+      if type(R['preferences'][k]) != list: return 'Error: Invalid input data\n'
+      else:
+        for i in range(len(R['preferences'][k])): 
+          if type(R['preferences'][k][i]) != str: return 'Error: Invalid input data\n'
+    
+    # Create the user if doesn't exist
+    user.preferences = R['preferences']
   try:
     user.create()
     user.store_preferences()
   except Exception, e:
+    user.dbcursor.close()
     return 'Error: Could not create user.'
+  user.dbcursor.close()
   
   return 'Success\n'
 
@@ -61,9 +63,11 @@ def discover():
       # user.load_preferences()
       req = Requestor(user)
       results = req.process()
+      user.dbcursor.close()
       if results is not None: return str(results)
       else: return 'Error: Requests returned no data'
     else:
+      user.dbcursor.close()
       return 'Error: Invalid user.\n'
   else:
     return 'Error: Invalid or not enough data. Exptecting id, latitude, and longitude.\n'

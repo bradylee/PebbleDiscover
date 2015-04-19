@@ -93,6 +93,7 @@ class User():
       return 'Error: Could not create user in mongodb, %s.' % str(e)
   
   def load_preferences(self):
+    """Load preferences"""
     try:
       u_data = self.collection.find_one({'_id': self.user_id})
       if u_data is not None:
