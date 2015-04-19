@@ -13,7 +13,7 @@ class GoogleMapSearch(collections.MutableMapping):
     self.parameters = {}
     
     # Required parameters
-    self.parameters['key'] = kwargs['key'] if kwargs.has_key('key') else os.environ['MAPS_KEY'] if os.environ.has_key('MAPS_KEY') else None
+    self.parameters['key'] = kwargs['key'] if kwargs.has_key('key') else os.environ['GOOGLE_MAPS_KEY'] if os.environ.has_key('GOOGLE_MAPS_KEY') else None
     self.parameters['location'] = None
     self.parameters['radius'] = None
     
@@ -54,7 +54,7 @@ class GoogleMapSearch(collections.MutableMapping):
     return response.json() if response.ok else None
 
 """Parallel search"""
-def parallel_search(gmap_search): gmap_search.search()
+def parallel_search(gmap_search): return gmap_search.search()
 
 class Requestor():
   
@@ -85,3 +85,5 @@ class Requestor():
       # Send all requests
       async_pool = Pool(processes=8)
       async_pool.map(parallel_search, async_queries)
+      return async_queries
+    else: return None
