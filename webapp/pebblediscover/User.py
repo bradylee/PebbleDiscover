@@ -8,34 +8,29 @@ from copy import deepcopy
 class User():
   
   DEFAULT_PREFERENCES = { \
-    'restaurants': [  \
-        'Type1',  \
-        'Type1',  \
-        'Type1'], \
-    'music': [ \
-        '',  \
-        '',  \
+    'food': [  \
+        'bakery',  \
+        'cafe',  \
+        'meal_delivery',  \
+        'meal_takeaway',  \
+        'food',  \
+        'restaurant'], \
+    'stores': [ \
+        'department_store',  \
+        'clothing_store',  \
+        'store',  \
+        'electronics_store' ],
+    'venues': [ \
+        'zoo',  \
+        'amusement_park',  \
+        'casino',  \
+        'shopping_mall',  \
+        'movie_theater',  \
         '' ],
-    'music': [ \
-        '',  \
-        '',  \
-        '' ],
-    'music': [ \
-        '',  \
-        '',  \
-        '' ],
-    'music': [ \
-        '',  \
-        '',  \
-        '' ],
-    'music': [ \
-        '',  \
-        '',  \
-        '' ],
-    'music': [ \
-        '',  \
-        '',  \
-        '' ]}
+    'public_transport': [ \
+        'subway_station',  \
+        'taxi_stand',  \
+        'train_station' ]}
   
   DEFAULT_DBNAME = 'pebblediscover'
   DEFAULT_CNAME = 'preferences'

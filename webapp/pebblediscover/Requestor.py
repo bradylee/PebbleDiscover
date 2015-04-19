@@ -53,6 +53,9 @@ class GoogleMapSearch(collections.MutableMapping):
     response = requests.get(GoogleMapSearch.GOOGLE_MAPS_URL, params=parameters)
     return response.json() if response.ok else None
 
+"""Parallel search"""
+def parallel_search(gmap_search): gmap_search.search()
+
 class Requestor():
   
   def __init__(self):
@@ -67,19 +70,18 @@ class Requestor():
       for k, v in self.user.preferences.iteritems():
         for l in self.user.preferences[k]:
           gmap_search = GoogleMapSearch()
-          gmap_search.parameters['keyword'] = k+' '+l
-          gmap_search.parameters['language'] = 'eng'
-          gmap_search.parameters['minprice'] = None
-          gmap_search.parameters['maxprice'] = None
-          gmap_search.parameters['name'] = None
-          gmap_search.parameters['opennow'] = None
-          gmap_search.parameters['rankby'] = None
-          gmap_search.parameters['types'] = None
-          gmap_search.parameters['pagetoken'] = None
-          gmap_search.parameters['zagatselected'] = None
+          gmap_search.parameters['keyword'] = l
+          gmap_search.parameters['language'] = 'en'
+          # gmap_search.parameters['minprice'] = None
+          # gmap_search.parameters['maxprice'] = None
+          # gmap_search.parameters['name'] = None
+          # gmap_search.parameters['opennow'] = None
+          # gmap_search.parameters['rankby'] = None
+          if k != 'keywords': gmap_search.parameters['types'] = k
+          # gmap_search.parameters['pagetoken'] = None
           
           async_queries.append(gmap_search)
        
       # Send all requests
       async_pool = Pool(processes=8)
-      async_pool.map(lambda x: x.search(), async_queries)
+      async_pool.map(parallel_search, async_queries)

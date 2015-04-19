@@ -29,11 +29,7 @@ def register():
   for k, v in R.iteritems():
     if type(R[k]) != list: return 'Error: Invalid input data\n'
     else:
-      for i in range(len(R[k])):
-        if i != len(R[k])-1: 
-          if type(R[k][i]) != str: return 'Error: Invalid input data\n'
-        elif type(R[k][i]) != str and type(R[k][i]) != list:
-          return 'Error: Invalid input data\n'
+      for i in range(len(R[k])): if type(R[k][i]) != str: return 'Error: Invalid input data\n'
   
   # Create the user if doesn't exist
   user.preferences = R
