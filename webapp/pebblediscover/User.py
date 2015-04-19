@@ -35,9 +35,10 @@ class User():
   DEFAULT_DBNAME = 'pebblediscover'
   DEFAULT_CNAME = 'preferences'
   
-  def __init__(self, user_id=None, username=None, dbname=DEFAULT_DBNAME, collection_name=DEFAULT_CNAME, preferences=DEFAULT_PREFERENCES, host='localhost', port='27017'):
+  def __init__(self, user_id=None, username=None, location='40,-88', dbname=DEFAULT_DBNAME, collection_name=DEFAULT_CNAME, preferences=DEFAULT_PREFERENCES, host='localhost', port='27017'):
     self.user_id = user_id
     self.username = username
+    self.location = location
     
     self.dbname = dbname
     self.collection_name = collection_name
@@ -66,6 +67,7 @@ class User():
     try:
       u_data = self.collection.find_one({'username': self.username})
       self.user_id = u_data['_id']
+      self.location = u_data['location']
       if u_data != None: return True
       else: return False
     except Exception, e:

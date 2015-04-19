@@ -53,9 +53,7 @@ def discover():
   gps_longitude = request.args.get('longitude')
   if username != None and gps_latitude != None and gps_longitude != None:
     # Parse data
-    gps_latitude = float(gps_latitude)
-    gps_longitude = float(gps_longitude)
-    user = User(username=username)
+    user = User(username=username,location=gps_latitude+','+gps_longitude)
     if user.exists():
       # Perform search
       
