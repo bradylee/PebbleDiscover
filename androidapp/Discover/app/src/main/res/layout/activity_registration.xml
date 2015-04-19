@@ -16,8 +16,8 @@ android:layout_height="match_parent" android:background="@color/background_mater
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="@dimen/table_height"
-            android:id="@+id/username_input"
-            android:paddingBottom="@dimen/registration_pad_bot"/>
+            android:id="@+id/usernn_input"
+            android:paddingBottom="@dimen/registration_pad_bot" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -25,9 +25,10 @@ android:layout_height="match_parent" android:background="@color/background_mater
             android:paddingTop="@dimen/registration_pad_bot"
             android:text="Venues" />
 
-        <View
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:id="@+id/venues">
 
             <CheckBox
@@ -60,7 +61,7 @@ android:layout_height="match_parent" android:background="@color/background_mater
                 android:text="Movie Theatre"
                 android:id="@+id/venues_movie_theatre"/>
 
-        </View>
+        </LinearLayout>
 
         <TextView
             android:layout_width="fill_parent"
@@ -68,9 +69,10 @@ android:layout_height="match_parent" android:background="@color/background_mater
             android:paddingTop="@dimen/registration_pad_bot"
             android:text="Food" />
 
-        <View
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:id="@+id/food">
 
             <CheckBox
@@ -78,12 +80,6 @@ android:layout_height="match_parent" android:background="@color/background_mater
                 android:layout_height="wrap_content"
                 android:text="Food Bakery"
                 android:id="@+id/food_bakery"/>
-
-            <CheckBox
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Zoo"
-                android:id="@+id/zoo"/>
 
             <CheckBox
                 android:layout_width="fill_parent"
@@ -103,7 +99,7 @@ android:layout_height="match_parent" android:background="@color/background_mater
                 android:text="Food Restaurant"
                 android:id="@+id/restaurant"/>
 
-        </View>
+        </LinearLayout>
 
         <TextView
             android:layout_width="fill_parent"
@@ -111,9 +107,10 @@ android:layout_height="match_parent" android:background="@color/background_mater
             android:paddingTop="@dimen/registration_pad_bot"
             android:text="Stores" />
 
-        <View
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:id="@+id/stores">
 
             <CheckBox
@@ -134,7 +131,7 @@ android:layout_height="match_parent" android:background="@color/background_mater
                 android:text="Electronics Stores"
                 android:id="@+id/electronics_store"/>
 
-        </View>
+        </LinearLayout>
 
         <TextView
             android:layout_width="fill_parent"
@@ -142,9 +139,10 @@ android:layout_height="match_parent" android:background="@color/background_mater
             android:paddingTop="@dimen/registration_pad_bot"
             android:text="Public Transport" />
 
-        <View
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:id="@+id/public_transport">
 
             <CheckBox
@@ -165,7 +163,7 @@ android:layout_height="match_parent" android:background="@color/background_mater
                 android:text="Taxi Stand"
                 android:id="@+id/taxi_stand"/>
 
-        </View>
+        </LinearLayout>
 
         <TextView
             android:layout_width="fill_parent"

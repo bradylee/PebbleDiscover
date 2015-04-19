@@ -11,10 +11,88 @@
         android:layout_height="fill_parent"
         android:id="@+id/main_scroller">
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="@dimen/table_height"
-            android:background="@color/background_material_dark"/>
+            android:orientation="vertical"
+            android:background="@color/background_material_dark">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Realtime Discovery Enabled"
+                android:textColor="@color/abc_primary_text_material_light"
+                android:textSize="35dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Food"
+            android:textSize="25dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/food_table">
+
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Venues"
+            android:textSize="25dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/venues_table">
+
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Stores"
+            android:textSize="25dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/stores_table">
+
+
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Public Transport"
+            android:textSize="25dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/public_transport_table">
+
+
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
