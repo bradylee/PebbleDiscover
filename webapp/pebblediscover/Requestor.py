@@ -3,6 +3,7 @@
 import requests
 import os
 import collections
+import json
 from multiprocessing import Pool
 
 class GoogleMapSearch(collections.MutableMapping):
@@ -58,18 +59,23 @@ def parallel_search(gmap_search): return gmap_search.search()
 
 class Requestor():
   
-  def __init__(self):
-    self.user = None
+  def __init__(self, user=None):
+    self.user = user
   
   def process(self):
     """Asynchronously query google maps"""
     if self.user is not None:
       async_queries = []
       
+      # DEBUGGING
+      # prefs = []
+      
       # Load in preferences
       for k, v in self.user.preferences.iteritems():
         for l in self.user.preferences[k]:
           gmap_search = GoogleMapSearch()
+          gmap_search.parameters['location'] = '40,-88'
+          gmap_search.parameters['radius'] = '10000'
           gmap_search.parameters['keyword'] = l
           gmap_search.parameters['language'] = 'en'
           # gmap_search.parameters['minprice'] = None
@@ -80,10 +86,21 @@ class Requestor():
           if k != 'keywords': gmap_search.parameters['types'] = k
           # gmap_search.parameters['pagetoken'] = None
           
+          # DEBUGGING
+          # prefs.append(gmap_search.parameters)
+          
           async_queries.append(gmap_search)
        
       # Send all requests
       async_pool = Pool(processes=8)
-      async_pool.map(parallel_search, async_queries)
-      return async_queries
+      response = async_pool.map(parallel_search, async_queries)
+      filtered_responses = ['']*len(response)
+      for i, r in enumerate(response):
+        filtered_response = {k:v for (k, v) in r.iteritems()}
+        filtered_response['category'] = {'name': None, 'type': None}
+        if async_queries[i].parameters.has_key('type') and async_queries[i].parameters['types'] != '' and async_queries[i].parameters['types'] is not None: filtered_response['category']['name'] = async_queries[i].parameters['types']
+        else: filtered_response['category']['name'] = 'keyword'
+        filtered_response['category']['type'] = async_queries[i].parameters['keyword']
+        filtered_responses[i] = filtered_response
+      return filtered_responses
     else: return None

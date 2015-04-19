@@ -3,6 +3,7 @@
 from flask import Flask, request, render_template, url_for
 from User import User
 from copy import deepcopy
+from Requestor import Requestor
 
 app = Flask(__name__)
 
@@ -29,12 +30,14 @@ def register():
   for k, v in R.iteritems():
     if type(R[k]) != list: return 'Error: Invalid input data\n'
     else:
-      for i in range(len(R[k])): if type(R[k][i]) != str: return 'Error: Invalid input data\n'
+      for i in range(len(R[k])): 
+        if type(R[k][i]) != str: return 'Error: Invalid input data\n'
   
   # Create the user if doesn't exist
   user.preferences = R
   try:
     user.create()
+    user.store_preferences()
   except Exception, e:
     return 'Error: Could not create user.'
   
@@ -43,18 +46,23 @@ def register():
 @app.route('/discover')
 def discover():
   """Return all relevant queries from Google Maps"""
-  user_id = request.args.get('id')
+  username = request.args.get('username')
   gps_latitude = request.args.get('latitude')
   gps_longitude = request.args.get('longitude')
-  if user_id != None and gps_latitude != None and gps_longitude != None:
+  if username != None and gps_latitude != None and gps_longitude != None:
     # Parse data
-    user_id = int(user_id)
     gps_latitude = float(gps_latitude)
     gps_longitude = float(gps_longitude)
-    user = User(user_id=user_id)
-    if user.load_preferences() == None:
+    user = User(username=username)
+    if user.exists():
       # Perform search
-      pass
+      
+      # LOAD USER PREFERENCES FROM MONGODB
+      # user.load_preferences()
+      req = Requestor(user)
+      results = req.process()
+      if results is not None: return str(results)
+      else: return 'Error: Requests returned no data'
     else:
       return 'Error: Invalid user.\n'
   else:
